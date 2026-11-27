@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Saltbush and Cleaver, heritage butcher at Adelaide Central Market">
+  <defs>
+    <pattern id="tile" width="120" height="44" patternUnits="userSpaceOnUse">
+      <rect width="120" height="44" fill="#726945"/>
+      <rect x="1" y="1" width="118" height="42" rx="3" fill="#1d4e3c" stroke="#112c23" stroke-width="2"/>
+      <path d="M4 6h111M4 9h67" stroke="#8fa592" stroke-opacity=".44"/>
+      <path d="M4 39h111" stroke="#0d241b" stroke-width="3"/>
+    </pattern>
+    <g id="sprig" stroke="#17392c" stroke-width="1.5">
+      <path d="M17 96Q53 68 115 10m-72 64-7-25m26 10 17 2m-1-15-3-18m20 1 15 1" fill="none" stroke="#dbbe78"/>
+      <path d="M36 55c-20-6-23-24-14-26 9-1 17 10 14 26Z
+        M43 75C48 57 70 69 68 76c-1 6-17 10-25-1Zm20-15C75 44 94 50 96 56c2 9-17 14-33 4Z
+        M62 57C44 52 40 26 50 27c11 1 15 15 12 30Zm13-25C61 23 66 5 73 5c8 0 14 15 2 27Z
+        M87 38c11-16 32-16 35-8 3 8-14 14-35 8Zm13-14c1-16 21-26 25-21 4 7-11 19-25 21Z" fill="#a3b8a5"/>
+      <path d="m28 41 8 13m16-14 9 16m8 5 14-4m24-22 7-2M51 74l9 1" fill="none"/>
+    </g>
+  </defs>
+  <rect width="1200" height="630" fill="url(#tile)"/>
+  <rect x="25" y="25" width="1150" height="580" fill="none" stroke="#e4bf73" stroke-width="2"/>
+  <rect x="35" y="35" width="1130" height="560" fill="none" stroke="#b08a3e"/>
+  <path d="M125 548V278a475 215 0 0 1 950 0v270Z" fill="#102c22" stroke="#b08a3e" stroke-width="7"/>
+  <path d="M140 533V279a460 202 0 0 1 920 0v254Z" fill="#153f32" stroke="#ead091" stroke-width="2"/>
+  <path d="M151 523V277a449 192 0 0 1 898 0v246Z" fill="none" stroke="#b08a3e" stroke-width="1.5"/>
+  <path d="M151 277 452 109q45-10 90-18L151 320Zm0 65L583 86l26-1-458 270Zm710 181 188-139v23L895 523Z" fill="#8fa592" opacity=".13"/>
+  <path d="M600 86v437M152 323h897" fill="none" stroke="#0d261d" stroke-width="4"/>
+  <g fill="none" stroke="#b08a3e" stroke-width="2">
+    <path d="M362 198h135m205 0h136m-254-31h32m-16-10v20M307 419h220m146 0h220m-305 0 12-8 12 8-12 8Z"/>
+  </g>
+  <g text-anchor="middle" font-family="Holtwood One SC" fill="#f3d594" stroke="#0d261d" stroke-width="5" paint-order="stroke">
+    <text x="600" y="207" font-size="20" letter-spacing="5">Est. 1928</text>
+    <text x="600" y="308" font-size="86" letter-spacing="-2">Saltbush &amp;</text>
+    <text x="600" y="394" font-size="102" letter-spacing="-2">Cleaver</text>
+  </g>
+  <text x="600" y="478" text-anchor="middle" font-family="Besley Variable" font-size="25" font-weight="650" letter-spacing="1.1" fill="#efebe0">Heritage butcher · Adelaide Central Market</text>
+  <use href="#sprig" transform="translate(90 455) rotate(-15) scale(1.23)"/>
+  <use href="#sprig" transform="translate(1110 455) rotate(15) scale(-1.23 1.23)"/>
+  <path d="M145 560h910m-693 12h476" stroke="#d6b266" stroke-width="2"/>
+</svg>

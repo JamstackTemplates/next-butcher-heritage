@@ -64,7 +64,7 @@ export function JamstacksSupportForm({ siteId, embedUrl, email }: Props) {
       <p className="enquiry__status" role="status" aria-live="polite">
         {status === 'loading' || status === 'loaded' ? 'Loading the enquiry form…'
           : status === 'slow' ? <>The form is taking longer than usual to appear. You can also email {mail}.</>
-          : status === 'error' ? <>The enquiry form couldn’t be loaded just now. Please email {mail} instead — it reaches us just the same.</>
+          : status === 'error' ? <>The enquiry form couldn’t be loaded just now. Please email {mail} instead.</>
           : null}
       </p>
 

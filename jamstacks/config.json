@@ -1,0 +1,19 @@
+{
+  "name": "Heritage butcher",
+  "description": "A Federation-era shopfront theme for independent butchers: a chalk specials board with editable weekly prices, an interactive beef, lamb and pork cut chart with cooking guides, barbecue packs, opening hours and location, and a Jamstacks contact component for holiday preorder enquiries.",
+  "tech": "next",
+  "type": "butcher",
+  "style": "heritage",
+  "internal": false,
+  "components": [
+    "support-form"
+  ],
+  "configFile": "site.config.json",
+  "screenshots": {
+    "light": "jamstacks/home-light.jpg",
+    "dark": "jamstacks/home-dark.jpg",
+    "theme": {
+      "strategy": "media"
+    }
+  }
+}

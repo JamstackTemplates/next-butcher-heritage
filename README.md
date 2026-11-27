@@ -1,71 +1,90 @@
-# JamstackTemplates Next.js starter
+# Saltbush & Cleaver Butchery
 
-The shared starter for Next.js templates in the `JamstackTemplates` organization. Its canonical home is
-`JamstackTemplates/template-next`, alongside the templates generated from it.
-It is not a gallery design or a published demo. Business content is sample content. No application code
-in a website created from this template depends on the starter checkout or the portal repository.
+A static Next.js website and the Heritage butcher design for the Jamstacks gallery. Saltbush &
+Cleaver, its story, prices and contact details are fictitious. The Adelaide Central Market is the
+public landmark used for the demo.
 
-## Build your website
+## Preview locally
 
-Start in the checkout of the repository GitHub created from `JamstackTemplates/template-next`. All
-starter files are already present. Local development requires Node 24 or later and npm.
-
-To build a new site, fill in `plan/PLAN.md`, then tell the coding agent **`Implement plan/PLAN.md`**.
-In Claude Code, `/write-plan <business description>` drafts the brief for you. For a gallery template,
-pass the table row: `/write-plan next-type-style | Business | Description | Form purpose`.
-After reviewing the finished site, run `/cleanup-plan` or delete `plan/` and `.claude/skills/` by hand
-to remove all initial build instructions.
-
-To preview locally, run `npm ci` and `npm run dev` from the repository root.
-
-## Pages
+Use Node 24 or later. Run `npm ci` to install, `npm run dev` for local editing, and
+`npm run check` followed by `npm start` to preview the production export at
+`http://localhost:3000/`. The production export uses Next.js’s bundled Webpack.
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Minimal content-driven home page and Organization JSON-LD |
-| `/contact/` | Hosted support form when configured; visible email alternative |
-| `/404.html` | Friendly static error page |
+| `/` | Featured specials, cut chart, packs, Christmas and market hours |
+| `/specials/` | Weekly board with shareable animal filters and a print view |
+| `/packs/` | Pack contents, weights, serving counts and price tickets |
+| `/cuts/` | Beef, lamb and pork chart and six linked cooking guides |
+| `/christmas/` | Calendar, collection hours, printable list and enquiry steps |
+| `/contact/` | Hosted enquiry form when configured, with email and phone |
+| `/404.html` | Themed static error page |
 
-## Make it yours
+## Update the shop content
 
-| File | Owns |
+| File | Owner-editable values |
 | --- | --- |
-| `content/business.ts` | Shared business name, contact details and starter sample copy |
-| `app/page.tsx`, `app/<route>/page.tsx` | Page composition and editable copy such as headings and calls to action |
-| `content/menu.ts` or `content/services.ts` (add when needed) | Industry-specific typed collections |
-| `site.config.json` | Public name, description, hostname, optional timeZone and Jamstacks integration |
-| `app/tailwind.input.css` | Theme tokens, utility mappings and small shared styles |
-| `components/site-header.tsx`, `site-footer.tsx` | Replaceable navigation and visual shell |
-| `lib/structured-data.ts` | Schema type/properties derived from real content |
-| `app/sitemap.ts` | Public routes; update when adding a page |
+| `content/business.ts` | Wordmark, year, story, public contact details, address, map query, directions, geographic coordinates and weekly hours |
+| `content/specials.ts` | Board dates, item copy, animal, prices, unit, availability, featured and selling-fast flags |
+| `content/packs.ts` | Collection notice, serving counts, contents, total prices and availability |
+| `content/christmas.ts` | Opening and closing dates for enquiries, collection dates and hours, closures, sizes, prices and availability |
+| `content/cuts.ts`, `content/chart-art.ts`, `content/guides.ts` | Primals, illustrated regions, cooking methods, linked cuts, guide timings and steps |
+| `app/page.tsx`, `app/<route>/page.tsx` | Page-specific headings, text and button labels in display order |
+| `site.config.json` | Public name, description, hostname, IANA time zone and Jamstacks integration |
 
-Edit page copy in the route file, for example `<Hero.Heading>Seasonal flowers</Hero.Heading>`
-in `app/page.tsx` for the Home page. The backing
-component owns the styling and interactions. Use typed fields for data the site needs to look up or
-reuse. For example, change `business.email` to update Contact. Rename in `business.name` and
-`site.config.json.name`. Add a typed core-content file for frequent owner edits: a food menu should use
-the existing sections/items/price/availability model; changes such as sold out, seasonal or a new section
-should be data edits with actionable content tests. Do not add business content to configuration: the
-Jamstacks provisioner replaces that file wholesale, possibly adding `provisioningId`.
+### Change the weekly board
 
-## Appearance and optional local-business features
+Edit `weekOf` to the Tuesday and `validUntil` to the following Saturday, in `YYYY-MM-DD` format.
+For example, use `2026-12-01` and `2026-12-05` for the next board. Set the rib eye's
+`priceCents` to `5190` for $51.90, and mark `saltbush-lamb-cutlets` unavailable with
+`available: false` to show its sold-out stamp. Leave `featured: true` on exactly four specials.
+The same edit updates Home and Specials. Run `npm run check` to validate and rebuild.
 
-The starter uses system fonts, neutral Tailwind v4 tokens and the published `jamstacks` package's
-ThemeProvider, ThemeScript and DarkModeToggle. No font download or font licence file is needed for
-system fonts. Each designed template chooses and documents self-hosted font packages and their licences.
-Utilities live in components; colours originate in CSS tokens with light, automatic-dark and explicit-dark
-values plus `@theme inline` mappings. Keep the hosted form's primary fill dark enough for white text.
-Keyboard focus, reduced motion and print styles are included. The footer credit is yours to keep,
-reword or remove.
+### Edit packs, Christmas and guides
 
-For a business with visiting hours, add address/directions/hours to typed content, set the IANA `timeZone`
-in site.config.json and use optional `GoogleMap`, `TimeZoneNote` and `OpenBadge` components. GoogleMap
-accepts an address and descriptive title; map helpers need no key. `OpenBadge` accepts seven
-`OpeningHours` records, uses the business zone and refreshes each minute in the browser; static/no-JS
-output is neutral. Same-day intervals only: overnight hours fail validation and need a tested extension
-before use. The baseline home page does not load a map or assert opening hours.
+- Keep IDs stable, unique within their collection and lowercase with hyphens. Guide and pack IDs
+  are used in public anchors. Keep primal region IDs aligned with the SVG artwork and guide IDs
+  aligned with the cooking guides.
+- Prices are positive integer AUD cents. A special's optional `wasCents` must exceed its current
+  price. Units are `kg`, `pack` or `each` for specials and `kg` or `each` for Christmas items.
+  Availability is a boolean.
+- Each pack needs at least three entries. `quantity` is the number of pieces or containers.
+  Optional `weightGrams` is the total for that line. `noticeDays` applies to all packs.
+- For each Christmas season, set `enquiriesOpen`, `enquiriesClose`, `collectionDays`,
+  `collectionHours` and `closedDays` together. Collection days follow the closing date and
+  each uses a same-day 24-hour `HH:MM` interval. Holiday dates override regular trading hours.
+  Enquiries close at the end of the listed Adelaide date.
+- Guides have three to six steps, linked `cutIds`, elapsed and active minutes, heat and optional
+  core temperature, and resting minutes. Elapsed time includes resting and preparation waits.
 
-## Public configuration
+### Move or rename the shop
+
+Update the display name in both `content/business.ts` and `site.config.json`. For phone edits,
+set `phone` for display and `telephone` for the international dial link. Update `address`,
+`mapQuery`, `geo` and `directions` together. `showMap: false` hides the optional Google Maps
+disclosure. The directions link remains available.
+
+Weekly `hours` use local 24-hour `HH:MM` and omit both times for a closed day. The browser
+refreshes status every minute in the configured IANA zone. The static export provides the weekly
+schedule and fixed seasonal dates. The hours model supports intervals within one day.
+
+## Appearance
+
+The header, footer and glass panels use gilt and enamel tile. The counter uses marble and
+butcher paper, with chalkboard rows, scalloped tickets, wrapped parcels and engraved chart
+illustrations. The theme is in `app/tailwind.input.css` and illustrations are in `components/art/`.
+The home hero is a painted view along the counter, with a matching light and dark version in
+`public/hero/` (`counter-light-*.webp`, `counter-dark-*.webp`, 1376 and 800 px wide).
+`components/home-hero.tsx` picks the one that matches the visitor's theme. To replace it, keep the
+same file names, keep the left side calm and close to the page background (`#F4EEDF` light,
+`#141A17` dark) so the headline stays readable, and keep both versions in the same composition.
+The beef, lamb and pork chart drawings live in `content/chart-art.ts`; each cut region is clipped
+to the animal's outline, so a region only needs a rough dividing polygon.
+The Jamstacks theme control offers system, light and dark preferences. Holtwood One SC, Besley and
+Kaushan Script are bundled locally through Fontsource. The SIL Open Font License is in each
+installed font package.
+
+# Public configuration
 
 ```json
 {
@@ -77,9 +96,7 @@ before use. The baseline home page does not load a map or assert opening hours.
 }
 ```
 
-The starter itself leaves domain/timeZone unset. Gallery templates use their folder name plus
-`.jamstacks.net`; customers replace the demo domain with their own. Do not invent canonical URLs when
-the deployed address is unknown.
+This gallery demo uses `next-butcher-heritage.jamstacks.net` and `Australia/Adelaide`. Replace the demo domain and time zone when adapting it for a different business.
 
 | Environment variable | Public build-time meaning |
 | --- | --- |
@@ -116,8 +133,9 @@ PAGES_BASE_PATH=/preview PAGES_BASE_URL=https://owner.github.io/preview npm run 
 npm start -- --base /preview --port 3000
 ```
 
-Tests cover config/provisioner compatibility, embed state, content rules, optional opening hours,
-and structured-data escaping. Typecheck uses Next's generated route types.
+Tests cover configuration, the embed, collection validation, Adelaide daylight saving, holiday hours
+and structured data. The export check scans the built pages for enquiry wording, canonical URLs,
+embed placement and broken anchors.
 When changing the Contact integration, base paths or canonical URLs, check the exported HTML and
 sitemap. Verify both configured and unconfigured Contact with the corresponding build settings.
 Test light/dark at desktop and mobile widths, keyboard navigation, unknown routes, repeated Contact
@@ -147,20 +165,18 @@ through a running Next.js server. Do not put private credentials into CSP or rel
 
 ## Publishing assets and structure
 
-`app/`, `components/`, `content/`, `lib/` and `types/` are the website. `scripts/` includes static
-preview and verification, `tests/` covers customer behavior, and `.github/` supplies deployment.
-`jamstacks/` is removable gallery-only source metadata. Ordinary builds, tests and Pages work after
-it is deleted. To publish a gallery template, create [its manifest](jamstacks/README.md) and capture
-genuine screenshots before running its separate publishing test:
+The customer website uses `app/`, `components/`, `content/`, `lib/`, `public/` and `types/`.
+`scripts/` serves and checks the export. `tests/` covers owner edits, hours and configuration.
+`jamstacks/` holds removable gallery metadata, captures and the SVG source for `public/og.png`.
+The social image uses stable shop copy and is 1200 × 630.
+
+After a fresh normal build, refresh the gallery screenshots using the portal tool and validate them.
 
 ```sh
 node /home/mythz/src/mythz/jamstacks.net/tools/template-screenshots/capture.mjs \
-  --template /path/to/next-type-style --modes light,dark --executable /usr/bin/chromium
+  --template "$PWD" --modes light,dark --executable /usr/bin/chromium
 node --test jamstacks/config.test.mjs
 ```
 
-Before publication: replace neutral content and shell; validate industry data/schema and all links;
-choose licensed fonts; verify both themes/base-path/embed states; create a neutral 1200×630 public/og.png
-from the finished design and wire metadata; replace the icon; generate gallery captures and validate;
-confirm domain/Pages settings and HTTPS; remove `plan/` and `.claude/skills/` after review. The website must not import or
-link the planning folder. No stock screenshot or OG image is supplied as if it were final.
+After reviewing the site, `plan/` and `.claude/skills/` can be removed. The site is self-contained
+and builds without the planning folder, gallery assets or the portal checkout.

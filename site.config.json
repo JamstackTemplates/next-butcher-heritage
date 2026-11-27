@@ -1,7 +1,8 @@
 {
-  "name": "Jamstacks starter",
-  "description": "A neutral Next.js foundation for Jamstacks websites.",
-  "domain": "",
+  "name": "Saltbush & Cleaver Butchery",
+  "description": "Heritage butcher at the Adelaide Central Market. Weekly specials, saltbush lamb, cut guides, barbecue packs and Christmas preorder enquiries.",
+  "domain": "next-butcher-heritage.jamstacks.net",
+  "timeZone": "Australia/Adelaide",
   "jamstacks": {
     "siteId": "",
     "cdnUrl": "https://cdn.jamstacks.net"

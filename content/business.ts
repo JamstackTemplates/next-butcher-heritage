@@ -1,35 +1,35 @@
-// Neutral starter content. Replace with the owner's real details or a template's fictitious brief.
-export interface Business {
-  /** Public display name; also update site.config.json's name when renaming. */
-  name: string;
-  /** Short headline for the home page. */
-  tagline: string;
-  /** Plain-text introduction used by the page and fallback metadata. */
-  introduction: string;
-  /** Public contact address, never a private notification destination. */
-  email: string;
-  /** Public number; blank hides it. */
-  phone: string;
-  /** Contact copy; the hosted form supports name, email and message only. */
-  enquiries: {
-    /** Contact page heading. */
-    title: string;
-    /** No booking, payment or delivery promises. */
-    introduction: string;
-    /** Suggestions for the message, not additional form inputs. */
-    usefulToInclude: string[];
-  };
-}
+import type { OpeningHours } from '../lib/hours.ts';
 
-export const business: Business = {
-  name: 'Jamstacks starter',
-  tagline: 'A foundation for your next website.',
-  introduction: 'Replace this neutral content with the business story, services and details that matter to its visitors.',
-  email: 'hello@example.com',
-  phone: '',
+/** Fictitious gallery business. Update the public name in site.config.json as well. */
+export const business = {
+  name: 'Saltbush & Cleaver Butchery',
+  wordmark: 'Saltbush & Cleaver',
+  established: 1928,
+  tagline: 'Cut to order since 1928.',
+  introduction: 'Heritage butcher at the Adelaide Central Market.',
+  story: 'Three generations of our family have worked behind this counter. We buy whole carcasses, break them down by hand and age our beef on the bone in the window room. Our saltbush lamb comes from the South Australian rangelands.',
+  email: 'counter@saltbushandcleaver.example',
+  phone: '(08) 7010 0472',
+  telephone: '+61870100472',
+  address: {
+    venue: 'Adelaide Central Market', street: '44–60 Gouger Street', locality: 'Adelaide',
+    region: 'SA', postcode: '5000', country: 'Australia', countryCode: 'AU',
+  },
+  geo: { latitude: -34.9298, longitude: 138.5988 },
+  mapQuery: 'Adelaide Central Market, 44–60 Gouger Street, Adelaide SA 5000, Australia',
+  showMap: true,
+  directions: 'On the Grote Street side, by the clock.',
+  priceRange: '$$',
+  hours: [
+    { day: 'Monday' },
+    { day: 'Tuesday', opens: '07:30', closes: '17:30' },
+    { day: 'Wednesday', opens: '07:30', closes: '17:30' },
+    { day: 'Thursday', opens: '07:30', closes: '17:30' },
+    { day: 'Friday', opens: '07:00', closes: '21:00' },
+    { day: 'Saturday', opens: '07:00', closes: '15:00' },
+    { day: 'Sunday' },
+  ] satisfies OpeningHours[],
   enquiries: {
-    title: 'Get in touch',
-    introduction: 'Send a question or enquiry. Arrangements are confirmed only when the business replies.',
-    usefulToInclude: ['What you would like to discuss', 'Any relevant dates or details'],
+    introduction: 'Ask about barbecue packs, Christmas preorders, larger quantities or a cut for your recipe.',
   },
 };

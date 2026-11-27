@@ -1,0 +1,22 @@
+{
+  "templateId": "next-butcher-heritage",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "fullPage": false,
+  "captures": [
+    {
+      "mode": "light",
+      "sha256": "684d3e9670732c552a84e6f9dcecd49b417fc649a151d17931e95133bc6d385f",
+      "file": "jamstacks/home-light.jpg",
+      "bytes": 250086
+    },
+    {
+      "mode": "dark",
+      "sha256": "f33e975a7450bbf8b2089594a3803ef20a787c63598c5607a1ddeeec8e22358d",
+      "file": "jamstacks/home-dark.jpg",
+      "bytes": 227948
+    }
+  ]
+}
